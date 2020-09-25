@@ -1,4 +1,4 @@
-# redshift-json-query-generator
+# Redshift JSON query generator
 Generate RedShift query to parse and flatten JSON
 
 # Problem statement
