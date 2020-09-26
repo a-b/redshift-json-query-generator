@@ -20,7 +20,21 @@ def input_json():
 }
 """
 
-data = json.loads(input_json())
+def parse_json(j, path):
+    # if j is None:
+    #     print(j, type(j))
+    #     return
+    
+    if isinstance(j, dict):
+        for k,v in j.items():
+            # print("-\t", k, type(v))
+            parse_json(v, path + "." + k)
 
-for k,v in data.items():
-    print(k, type(v), type(v) is list)
+    if isinstance(j, list):
+        for i in j:
+            print("=", i)
+            parse_json(i, "_")
+
+    print(path)
+
+parse_json(json.loads(input_json()), "")
