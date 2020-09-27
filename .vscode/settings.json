@@ -1,6 +1,20 @@
 {
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": false,
     "python.linting.banditEnabled": true,
-    "python.pythonPath": "/opt/python/latest/bin/python"
+    "python.pythonPath": "/opt/python/latest/bin/python",
+    "launch": {
+
+        "configurations": [],
+        "compounds": []
+    },
+    "saveAndRun": {
+        "commands": [
+          {
+            "match": ".py",
+            "cmd": "clear && /opt/python/latest/bin/python ${file}",
+            // "cmd": "/opt/python/latest/bin/python --version"
+            "useShortcut": false,
+            "silent": false
+          }
+        ]
+      }
 }
