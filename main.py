@@ -19,22 +19,23 @@ def input_json():
     ]
 }
 """
+def parse_json(j):
+    res = {}
 
-def parse_json(j, path):
-    # if j is None:
-    #     print(j, type(j))
-    #     return
+    def parse(node, path = ''):
+        if type(node) is dict:
+            for key in node:
+                parse(node[key], path + key + "_")
+        elif type(node) is list:
+            i = 0
+            for element in node:
+                parse(element, path + str(i) + "_")
+                i += 1
+        else:
+            print(f"DEBUG: #{res}")
+            res[path[:-1]]=node
     
-    if isinstance(j, dict):
-        for k,v in j.items():
-            # print("-\t", k, type(v))
-            parse_json(v, path + "." + k)
+    parse(j)
+    return(res)
 
-    if isinstance(j, list):
-        for i in j:
-            print("=", i)
-            parse_json(i, "_")
-
-    print(path)
-
-parse_json(json.loads(input_json()), "")
+print(parse_json(json.loads(input_json())))
